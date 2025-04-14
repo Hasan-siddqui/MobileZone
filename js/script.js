@@ -306,6 +306,24 @@ function initBarbaJS() {
             initWishlistButtons();
         });
     }
+    // Bind Add to Cart button on product-detail.html
+    const addToCartBtn = document.querySelector('.add-to-cart-btn');
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', function () {
+            const product = {
+                id: Date.now(), // Generate a unique ID for the product
+                name: document.querySelector('.product-info h1').textContent.trim(),
+                price: parseFloat(document.querySelector('.current-price').textContent.replace('$', '')),
+                image: document.querySelector('.product-main-image').src,
+            };
+
+            const quantity = parseInt(document.querySelector('.quantity-input').value) || 1;
+
+            addToCart(product, quantity);
+            updateCartUI();
+            showNotification(`${product.name} added to cart`);
+        });
+    }
 }
 
 // ==================
