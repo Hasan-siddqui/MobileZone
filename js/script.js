@@ -438,7 +438,25 @@ function addToCart(product, quantity = 1) {
 
     // Simulate async operation
     setTimeout(() => {
-        // Your existing cart logic
+        // Add product to cart
+        const existingItem = cart.find(item => item.id === product.id);
+
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.push({
+                ...product,
+                quantity
+            });
+        }
+
+        // Save cart and update UI
+        saveCart();
+        updateCartUI();
+        updateCartCount();
+
+        // Show notification
+        showNotification(`${product.name} added to cart`);
 
         // Restore button state
         if (btn) {
