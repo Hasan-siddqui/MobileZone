@@ -25,7 +25,7 @@ function initPreloader() {
     if (preloader) {
         setTimeout(() => {
             preloader.style.display = 'none';
-        }, 2000);
+        }, 1000);
     }
 }
 
