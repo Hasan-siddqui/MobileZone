@@ -309,6 +309,52 @@ function initBarbaJS() {
 }
 
 // ==================
+// Product Tabs Functionality
+// ==================
+
+function setupProductTabs() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    if (tabButtons.length && tabPanels.length) {
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                // Get the target panel ID or index
+                const targetPanel = button.textContent.trim().toLowerCase();
+
+                // Hide all panels
+                tabPanels.forEach(panel => panel.classList.remove('active'));
+
+                // Show the target panel
+                const panelsArray = Array.from(tabPanels);
+                const targetIndex = Array.from(tabButtons).indexOf(button);
+                if (panelsArray[targetIndex]) {
+                    panelsArray[targetIndex].classList.add('active');
+                }
+            });
+        });
+    }
+}
+
+// Initialize product tabs when page loads
+document.addEventListener('DOMContentLoaded', function () {
+    setupProductTabs();
+
+    // Re-initialize when Barba.js completes a page transition
+    if (typeof barba !== 'undefined') {
+        document.addEventListener('barbaAfterEnter', function () {
+            setupProductTabs();
+        });
+    }
+});
+
+
+// ==================
 // CART FUNCTIONALITY
 // ==================
 
