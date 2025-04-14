@@ -8,4 +8,4 @@ MobileZone is a modern e-commerce website offering the latest smartphones and ac
 - SEO-optimized for search engines
 
 ## Live Demo
-[Visit MobileZone](https://yourgithubusername.github.io/mobilezone/)
+[Visit MobileZone](https://hasan-siddqui.github.io/MobileZone/)
